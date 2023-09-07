@@ -29,7 +29,7 @@ public class SupplyService {
     public void save(SupplyDTO request) {
         SupplyEntity entity = supplyEntityMapper.map(request);
 
-        blockchainService.chainManager(entity);
+        entity = blockchainService.chainManager(entity);
 
         supplyRepository.save(entity);
     }

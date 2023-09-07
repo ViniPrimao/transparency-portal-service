@@ -53,15 +53,15 @@ The backend server should now be up and running on `http://localhost:8080`.
 
 ## Running the Backend with Docker Compose
 
-You can also run the backend using Docker Compose. Ensure you have Docker Compose installed and configured.
+You can run the MongoDB using Docker Compose. Ensure you have Docker installed and configured.
 
-1. **Start Docker Compose**: Run the following command in the project root directory to start the backend and the associated MongoDB container:
+1. **Start Docker Container**: Run the following command in the project root directory to start the Docker container:
 
    ```bash
    docker-compose up
    ```
 
-This will start the MongoDB container defined in the `docker-compose.yml` file.
+This will start the Docker container defined in the `docker-compose.yml` file.
 
 ## API Documentation
 

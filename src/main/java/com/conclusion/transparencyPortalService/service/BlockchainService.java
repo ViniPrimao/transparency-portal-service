@@ -1,14 +1,20 @@
 package com.conclusion.transparencyPortalService.service;
 
 import com.conclusion.transparencyPortalService.dto.SupplyDTO;
+import com.conclusion.transparencyPortalService.entity.SupplyEntity;
+import com.conclusion.transparencyPortalService.repository.SupplyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BlockchainService {
 
-    public SupplyDTO chainManager(SupplyDTO request) {
+    private final SupplyRepository supplyRepository;
 
-        return request;
+    public SupplyEntity chainManager(SupplyEntity entity) {
+
+        return entity;
     }
 
 }

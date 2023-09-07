@@ -1,6 +1,7 @@
 package com.conclusion.transparencyPortalService.service;
 
 import com.conclusion.transparencyPortalService.dto.SupplyDTO;
+import com.conclusion.transparencyPortalService.entity.SupplyEntity;
 import com.conclusion.transparencyPortalService.mapper.SupplyDTOMapper;
 import com.conclusion.transparencyPortalService.mapper.SupplyEntityMapper;
 import com.conclusion.transparencyPortalService.repository.SupplyRepository;
@@ -26,9 +27,10 @@ public class SupplyService {
     }
 
     public void save(SupplyDTO request) {
+        SupplyEntity entity = supplyEntityMapper.map(request);
 
-        blockchainService.chainManager(request);
+        blockchainService.chainManager(entity);
 
-        supplyRepository.save(supplyEntityMapper.map(request));
+        supplyRepository.save(entity);
     }
 }

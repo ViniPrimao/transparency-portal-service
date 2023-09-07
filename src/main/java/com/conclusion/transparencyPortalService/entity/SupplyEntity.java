@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,7 +23,7 @@ public class SupplyEntity implements Serializable {
     private static final long serialVersionUID = 4470405905296977788L;
 
     @Id
-    private String id;
+    private ObjectId _id;
     private String supplyName;
     private Double supplyValue;
     private LocalDateTime lastUpdateDate;

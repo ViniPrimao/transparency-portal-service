@@ -1,9 +1,12 @@
 package com.conclusion.transparencyPortalService.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -13,6 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SupplyDTO implements Serializable {
 
     @Serial
@@ -22,6 +26,8 @@ public class SupplyDTO implements Serializable {
     private Double supplyValue;
     private LocalDateTime lastUpdateDate;
     private LocalDateTime createdDate;
+    private String nodeId;
+    private String chainId;
     private String fromPlace;
     private String toPlace;
     private String updateBy;

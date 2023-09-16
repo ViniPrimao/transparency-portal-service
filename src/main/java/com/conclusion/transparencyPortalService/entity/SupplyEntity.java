@@ -29,10 +29,10 @@ public class SupplyEntity implements Serializable {
     private LocalDateTime lastUpdateDate;
     private LocalDateTime createdDate;
     private String nodeId;
+    private String chainId;
     private String fromPlace;
     private String toPlace;
     private String updateBy;
-    private String chainId;
     private String destiny;
     private boolean arrived;
 

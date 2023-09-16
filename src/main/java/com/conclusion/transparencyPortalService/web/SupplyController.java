@@ -1,6 +1,7 @@
 package com.conclusion.transparencyPortalService.web;
 
 import com.conclusion.transparencyPortalService.dto.SupplyDTO;
+import com.conclusion.transparencyPortalService.dto.SupplyResponseDTO;
 import com.conclusion.transparencyPortalService.service.SupplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class SupplyController {
 
     @GetMapping
     @ResponseStatus(OK)
-    public List<SupplyDTO> findAll() {
+    public List<SupplyResponseDTO> findAll() {
         return supplyService.findAll();
     }
 

@@ -16,11 +16,15 @@ public class BlockchainService {
 
     public SupplyEntity chainManager(SupplyEntity entity) {
 
-        SupplyEntity entityOnDatabase = supplyRepository.findById(String.valueOf(entity.get_id())).orElse(null);
+        SupplyEntity entityOnDatabase = supplyRepository.findAllByNodeId(String.valueOf(entity.getNodeId()))
+                .stream()
+                .findFirst()
+                .orElse(null);
 
         if (nonNull(entityOnDatabase)) {
             entity.setNodeId(entityOnDatabase.getNodeId());
             entity.setChainId(genChainId());
+            entity.set_id(null);
 
             return entity;
         }

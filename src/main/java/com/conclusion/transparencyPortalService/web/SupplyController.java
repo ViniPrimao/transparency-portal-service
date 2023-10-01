@@ -19,12 +19,21 @@ public class SupplyController {
     private final SupplyService supplyService;
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200/")
     @ResponseStatus(OK)
     public List<SupplyResponseDTO> findAll() {
         return supplyService.findAll();
     }
 
+    @GetMapping("/nodes")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @ResponseStatus(OK)
+    public List<SupplyResponseDTO> findNodes() {
+        return supplyService.findNodes();
+    }
+
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200/")
     @ResponseStatus(CREATED)
     public void save(@RequestBody SupplyDTO request) {
         supplyService.save(request);

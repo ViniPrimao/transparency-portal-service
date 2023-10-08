@@ -4,7 +4,6 @@ import com.conclusion.transparencyPortalService.dto.SupplyDTO;
 import com.conclusion.transparencyPortalService.dto.SupplyResponseDTO;
 import com.conclusion.transparencyPortalService.service.SupplyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +36,13 @@ public class SupplyController {
     @ResponseStatus(CREATED)
     public void save(@RequestBody SupplyDTO request) {
         supplyService.save(request);
+    }
+
+    @PostMapping("/all")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @ResponseStatus(CREATED)
+    public void saveAll(@RequestBody List<SupplyDTO> request) {
+        request.forEach(supplyService::save);
     }
 
 }

@@ -7,6 +7,7 @@ import com.conclusion.transparencyPortalService.mapper.SupplyDTOMapper;
 import com.conclusion.transparencyPortalService.mapper.SupplyEntityMapper;
 import com.conclusion.transparencyPortalService.repository.SupplyRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,7 +21,10 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class SupplyService {
+
+    private static final String DEFAULT_USER = "Admin";
 
     private final SupplyRepository supplyRepository;
 
@@ -59,7 +63,7 @@ public class SupplyService {
 
         supplies.forEach(supply -> {
             String nodeId = supply.getNodeId();
-            lastSuppliesByNodeId.put(nodeId, supply); // Update the last supply for this nodeId
+            lastSuppliesByNodeId.put(nodeId, supply);
         });
 
         lastSuppliesByNodeId.forEach((nodeId, lastSupply) -> {
@@ -79,6 +83,11 @@ public class SupplyService {
         entity.setLastUpdateDate(now());
         entity.setCreatedDate(now());
 
+        if (Objects.isNull(entity.getUpdateBy())) {
+            entity.setUpdateBy(DEFAULT_USER);
+        }
+
+        log.info("Saving supply name: " + entity.getSupplyName() + " updated by: " + entity.getUpdateBy());
         supplyRepository.save(entity);
     }
 }
